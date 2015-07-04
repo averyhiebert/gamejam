@@ -1,4 +1,3 @@
-
 var testPoint1 = new Vector(0,0);
 var testPoint2 = new Vector(0,20);
 var testPoint3 = new Vector(-50,50);
@@ -32,7 +31,6 @@ function keys(event){
         //spacebar
     }
 }
-
 
 function keypress(event){
     key=(event.keyCode);
@@ -91,20 +89,13 @@ function draw(){
     var ctx=c.getContext("2d");
     ctx.fillStyle="#AAAAFF";
     ctx.fillRect(0,0,800,800);
-    
-    ctx.fillStyle="#FF0000";
-    ctx.fillRect(100,100,10,10);
-    
     //testdraw(ctx);
     //t.test();
-    t.display(ctx);
+    //t.display(ctx);
     //player1 = new entity(20,20,testShape);
     player1.display(ctx);
-    testVec = new Vector(200,200);
+    testVec = new Vector(480,270);
     //testShape.display(testVec,ctx);
-    img=document.getElementById("machine");
-    ctx.drawImage(img,200,200);
-    /**/
 }
 
 function gameloop(){
@@ -115,7 +106,6 @@ function gameloop(){
     }
     throwaway = setTimeout("gameloop()",10);
 }
-
 
 function start(){
     img=document.getElementById("machine");

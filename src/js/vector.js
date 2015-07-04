@@ -1,5 +1,3 @@
-
-
 function Vector(x,y){
     this.x=x;
     this.y=y;
@@ -20,4 +18,7 @@ function Vector(x,y){
         return new Vector(n*this.x,n*this.y);
     }
 
+    function subtract(vector) {
+        return new Vector(this.x - vector.x, this.y - vector.y);
+    }
 }//vector

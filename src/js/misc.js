@@ -1,4 +1,3 @@
-
 function testdraw(ctx){
     ctx.fillStyle="#000000";
     ctx.fillRect(100,100,200,200);

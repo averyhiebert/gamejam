@@ -1,6 +1,5 @@
 function entity(n,x,y,shape,type){
     this.name = n;
-    
     this.p = new Vector(x,y);//position
     this.v = new Vector(0,0);//velocity (should be used to find direction)
     this.a = new Vector(0,0);//acceleration
@@ -9,6 +8,7 @@ function entity(n,x,y,shape,type){
     
     this.shape = shape;
     this.hasImage = false;
+    this.maxspeed = 1;
     
     //"player", "enemy", etc.
     this.entityType = type;
@@ -60,7 +60,6 @@ function entity(n,x,y,shape,type){
                 this.a.x = (-1)*this.v.x;
             }
         }
-        
     }
     
     this.update = update;
