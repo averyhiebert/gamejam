@@ -1,7 +1,7 @@
 var testPoint1 = new Vector(0,0);
-var testPoint2 = new Vector(0,20);
-var testPoint3 = new Vector(-50,50);
-var testPoint4 = new Vector(50,20);
+var testPoint2 = new Vector(0,50);
+var testPoint3 = new Vector(50,50);
+var testPoint4 = new Vector(50,0);
 var testShapePoints = [testPoint1, testPoint2, testPoint3, testPoint4];
 var testShape = new RotatableShape(testShapePoints);
 var t = new entity("test",120,120,testShape,"entity");
@@ -85,11 +85,14 @@ function mouseWasClicked(evt){
 function draw(){
     var c=document.getElementById("Canvas");
     var ctx=c.getContext("2d");
-    ctx.fillStyle="#AAAAFF";
+    ctx.font = "16px Arial";
+    ctx.fillStyle="#34495e";
     ctx.fillRect(0,0,960,540);
-    ctx.font = "30px Arial";
     //t.display(ctx);
     player1.display(ctx);
+    //display player variables
+    ctx.fillText("x-velocity: " + Math.round(player1.v.x * 100) / 100, 10, 30);
+    ctx.fillText("y-velocity: " + Math.round(player1.v.y * 100) / 100, 10, 60);
     testVec = new Vector(480,270);
 }
 

@@ -7,7 +7,7 @@ function RotatableShape(p){
     
     this.display = display;
     function display(origin,ctx){
-        ctx.fillStyle="#FF00FF";
+        ctx.fillStyle="#1abc9c";
         
         ctx.beginPath();
         ctx.moveTo(origin.x + this.points[0].x,origin.y + this.points[0].y);
