@@ -66,7 +66,6 @@ function keyup(event){
 }
 
 function mouseWasClicked(evt){
-    
     var x = event.x;
     var y = event.y;
     
@@ -79,7 +78,6 @@ function mouseWasClicked(evt){
         t.p.x = x;
         t.p.y = y;
     }
-    
 }
 
 function draw(){
@@ -97,7 +95,7 @@ function draw(){
 }
 
 function gameloop(){
-    if(!paused){
+    if (!paused) {
         t.update();
         player1.update();
         draw();
