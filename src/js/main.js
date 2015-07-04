@@ -67,6 +67,25 @@ function keyup(event){
     }
 }
 
+
+
+function mouseWasClicked(evt){
+    
+    var x = event.x;
+    var y = event.y;
+    
+    var tempc = document.getElementById("Canvas");
+    var rect = tempc.getBoundingClientRect();
+    
+    x -= rect.left;
+    y -= rect.top;
+    if(x>0 && y>0){
+        t.p.x = x;
+        t.p.y = y;
+    }
+    
+}
+
 function draw(){
     var c=document.getElementById("Canvas");
     var ctx=c.getContext("2d");
