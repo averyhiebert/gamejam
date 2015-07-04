@@ -1,3 +1,4 @@
+/*
 function entity(n,x,y,shape){
     this.name = n;
     
@@ -6,7 +7,6 @@ function entity(n,x,y,shape){
     this.a = new Vector(0,0);//acceleration
     this.shape = shape;
     this.hasImage = false;
-    this.maxspeed = 1;
     
     this.test = test;
     function test(){
@@ -27,16 +27,16 @@ function entity(n,x,y,shape){
         this.a.x = 0;
         this.a.y = 0;
         
-        if (upPressed) {
+        if(upPressed){
             this.a.y = -0.03;
         }
-        if (downPressed) {
+        if(downPressed){
             this.a.y = 0.03;
         }
-        if (leftPressed) {
+        if(leftPressed){
             this.a.x = -0.03;
         }
-        if (rightPressed) {
+        if(rightPressed){
             this.a.x = 0.03;
         }
     }
@@ -48,10 +48,6 @@ function entity(n,x,y,shape){
         this.v.y += this.a.y;
         this.p.x += this.v.x;
         this.p.y += this.v.y;
-        if (this.v.x >= this.maxspeed) {
-            this.v.x = this.maxspeed;
-        }
-
     }
     
     this.setImage = setImage;
@@ -60,4 +56,12 @@ function entity(n,x,y,shape){
         this.img = newImage;
     }
 }
+*/
 
+
+Enemy.prototype = new Entity();
+Enemy.prototype.constructor = Entity;
+function Enemy(x, y) {
+    this.p = new Vector(x, y);
+    this.shape = shape;
+}

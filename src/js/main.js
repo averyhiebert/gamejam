@@ -1,4 +1,3 @@
-
 var testPoint1 = new Vector(0,0);
 var testPoint2 = new Vector(0,20);
 var testPoint3 = new Vector(-50,50);
