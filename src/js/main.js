@@ -6,6 +6,8 @@ var testShapePoints = [testPoint1, testPoint2, testPoint3, testPoint4];
 var testShape = new RotatableShape(testShapePoints);
 var t = new entity("test",120,120,testShape,"entity");
 var player1 = new entity("name",200,200,testShape,"player");
+var entityList = [];
+entityList.push(player1);
 
 var upPressed = false;
 var leftPressed = false;
@@ -88,18 +90,25 @@ function draw(){
     ctx.font = "16px Arial";
     ctx.fillStyle="#34495e";
     ctx.fillRect(0,0,960,540);
-    //t.display(ctx);
-    player1.display(ctx);
+    
     //display player variables
     ctx.fillText("x-velocity: " + Math.round(player1.v.x * 100) / 100, 10, 30);
     ctx.fillText("y-velocity: " + Math.round(player1.v.y * 100) / 100, 10, 60);
-    testVec = new Vector(480,270);
-}
+    
+    
+    for (i=0;i<entityList.length;i++){
+        entityList[i].display(ctx);
+    }
+    
+}//draw
 
 function gameloop(){
     if(!paused){
-        t.update();
-        player1.update();
+        
+        
+        for (i=0;i<entityList.length;i++){
+            entityList[i].update();
+        }
         draw();
     }
     throwaway = setTimeout("gameloop()",10);
