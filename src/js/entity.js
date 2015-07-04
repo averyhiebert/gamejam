@@ -1,4 +1,4 @@
-function entity(n,x,y,shape){
+function entity(n,x,y,shape,type){
     this.name = n;
     
     this.p = new Vector(x,y);//position
@@ -7,6 +7,9 @@ function entity(n,x,y,shape){
     this.shape = shape;
     this.hasImage = false;
     this.maxspeed = 1;
+    
+    //"player", "enemy", etc.
+    this.entityType = type;
     
     this.test = test;
     function test(){
@@ -43,7 +46,9 @@ function entity(n,x,y,shape){
     
     this.update = update;
     function update(){
-        this.teststeer();
+        if(this.entityType == "player"){
+            this.teststeer();
+        }
         this.v.x += this.a.x;
         this.v.y += this.a.y;
         this.p.x += this.v.x;

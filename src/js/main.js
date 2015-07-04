@@ -4,7 +4,8 @@ var testPoint3 = new Vector(-50,50);
 var testPoint4 = new Vector(50,20);
 var testShapePoints = [testPoint1, testPoint2, testPoint3, testPoint4];
 var testShape = new RotatableShape(testShapePoints);
-var t = new entity("test",120,120,testShape);
+var t = new entity("test",120,120,testShape,"entity");
+var player1 = new entity("name",200,200,testShape,"player");
 
 var upPressed = false;
 var leftPressed = false;
@@ -77,8 +78,10 @@ function draw(){
     //testdraw(ctx);
     //t.test();
     t.display(ctx);
+    //player1 = new entity(20,20,testShape);
+    player1.display(ctx);
     testVec = new Vector(200,200);
-    testShape.display(testVec,ctx);
+    //testShape.display(testVec,ctx);
     img=document.getElementById("machine");
     ctx.drawImage(img,200,200);
     /**/
@@ -87,7 +90,7 @@ function draw(){
 function gameloop(){
     if(!paused){
         t.update();
-        
+        player1.update();
         draw();
     }
     throwaway = setTimeout("gameloop()",10);
