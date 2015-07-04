@@ -78,9 +78,8 @@ function draw(){
     testShape.display(testVec,ctx);
     img=document.getElementById("machine");
     ctx.drawImage(img,200,200);
-    //sprote = new SpriteThing("thing",300,300,img);
-    //sprote.display(ctx);
-    //sprote.update();
+    testSprite = new Sprite(img);
+    testSprite.dsplay(400,400,ctx);
 }
 
 function gameloop(){
