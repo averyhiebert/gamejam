@@ -5,6 +5,7 @@ function entity(n,x,y,shape){
     this.v = new Vector(0,0);//velocity (should be used to find direction)
     this.a = new Vector(0,0);//acceleration
     this.shape = shape;
+    this.hasImage = false;
     
     this.test = test;
     function test(){
@@ -13,7 +14,11 @@ function entity(n,x,y,shape){
     
     this.display = display;
     function display(ctx){
-        this.shape.display(new Vector(this.p.x,this.p.y),ctx);
+        if(!this.hasImage){
+            this.shape.display(new Vector(this.p.x,this.p.y),ctx);
+        }else{
+            ctx.drawImage(this.img,this.p.x,this.p.y);
+        }
     }
     
     this.teststeer = teststeer;
@@ -42,6 +47,12 @@ function entity(n,x,y,shape){
         this.v.y += this.a.y;
         this.p.x += this.v.x;
         this.p.y += this.v.y;
+    }
+    
+    this.setImage = setImage;
+    function setImage(newIamge){
+        this.hasImage = true;
+        this.img = newImage;
     }
 }
 

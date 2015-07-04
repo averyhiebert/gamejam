@@ -5,7 +5,7 @@ var testPoint3 = new Vector(-50,50);
 var testPoint4 = new Vector(50,20);
 var testShapePoints = [testPoint1, testPoint2, testPoint3, testPoint4];
 var testShape = new RotatableShape(testShapePoints);
-var t = new entity("test",250,250,testShape);
+var t = new entity("test",120,120,testShape);
 
 var upPressed = false;
 var leftPressed = false;
@@ -71,16 +71,18 @@ function draw(){
     var ctx=c.getContext("2d");
     ctx.fillStyle="#AAAAFF";
     ctx.fillRect(0,0,800,800);
-    testdraw(ctx);
+    
+    ctx.fillStyle="#FF0000";
+    ctx.fillRect(100,100,10,10);
+    
+    //testdraw(ctx);
     //t.test();
     t.display(ctx);
-    testVec = new Vector(500,500);
+    testVec = new Vector(200,200);
     testShape.display(testVec,ctx);
     img=document.getElementById("machine");
     ctx.drawImage(img,200,200);
-    //sprote = new SpriteThing("thing",300,300,img);
-    //sprote.display(ctx);
-    //sprote.update();
+    /**/
 }
 
 function gameloop(){
