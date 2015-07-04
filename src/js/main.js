@@ -96,6 +96,8 @@ function gameloop(){
 
 
 function start(){
+    img=document.getElementById("machine");
+    t.setImage(img);
     draw();
     gameloop();
 }
