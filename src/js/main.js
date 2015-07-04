@@ -65,8 +65,6 @@ function keyup(event){
     }
 }
 
-
-
 function mouseWasClicked(evt){
     
     var x = event.x;
@@ -88,14 +86,11 @@ function draw(){
     var c=document.getElementById("Canvas");
     var ctx=c.getContext("2d");
     ctx.fillStyle="#AAAAFF";
-    ctx.fillRect(0,0,800,800);
-    //testdraw(ctx);
-    //t.test();
+    ctx.fillRect(0,0,960,540);
+    ctx.font = "30px Arial";
     //t.display(ctx);
-    //player1 = new entity(20,20,testShape);
     player1.display(ctx);
     testVec = new Vector(480,270);
-    //testShape.display(testVec,ctx);
 }
 
 function gameloop(){
