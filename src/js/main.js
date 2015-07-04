@@ -6,6 +6,8 @@ var testShapePoints = [testPoint1, testPoint2, testPoint3, testPoint4];
 var testShape = new RotatableShape(testShapePoints);
 var t = new entity("test",120,120,testShape,"entity");
 var player1 = new entity("name",200,200,testShape,"player");
+var entityList = [];
+entityList.push(player1);
 
 var upPressed = false;
 var leftPressed = false;
@@ -89,20 +91,38 @@ function draw(){
     ctx.fillRect(0,0,960,540);
     ctx.font = "30px Arial";
     //t.display(ctx);
-    player1.display(ctx);
+    
+    
+    for (i=0;i<entityList.length;i++){
+        entityList[i].display(ctx);
+    }
+    
+    //entityList[0].display(ctx);
+    // player1.display(ctx);
     testVec = new Vector(480,270);
 }
 
 function gameloop(){
     if(!paused){
-        t.update();
-        player1.update();
+        
+        
+        for (i=0;i<entityList.length;i++){
+            entityList[i].update();
+        }
         draw();
     }
     throwaway = setTimeout("gameloop()",10);
 }
 
 function start(){
+    
+    
+/*
+    for(i=0;i<entityList.length;i++){
+        alert(entityList[i].toString());
+    }*/
+    
+    //alert(entityList[0].testName());
     img=document.getElementById("machine");
     t.setImage(img);
     draw();
