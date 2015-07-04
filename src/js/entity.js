@@ -50,7 +50,7 @@ function entity(n,x,y,shape){
     }
     
     this.setImage = setImage;
-    function setImage(newIamge){
+    function setImage(newImage){
         this.hasImage = true;
         this.img = newImage;
     }
