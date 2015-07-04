@@ -12,5 +12,4 @@ function Vector(x,y){
         mag = this.magnitude();
         return new Vector(this.x/mag,this.y/mag);
     }
-
 }//vector

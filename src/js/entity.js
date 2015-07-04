@@ -53,10 +53,6 @@ function entity(n,x,y,shape,type){
         this.v.y += this.a.y;
         this.p.x += this.v.x;
         this.p.y += this.v.y;
-        if (this.v.x >= this.maxspeed) {
-            this.v.x = this.maxspeed;
-        }
-
     }
     
     this.setImage = setImage;
