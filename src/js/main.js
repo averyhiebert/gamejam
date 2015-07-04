@@ -92,13 +92,13 @@ function draw(){
     ctx.fillRect(0,0,960,540);
     
     //display player variables
-    ctx.fillText("x-velocity: " + Math.round(player1.v.x * 100) / 100, 10, 30);
-    ctx.fillText("y-velocity: " + Math.round(player1.v.y * 100) / 100, 10, 60);
     
     
     for (i=0;i<entityList.length;i++){
         entityList[i].display(ctx);
     }
+    ctx.fillText("x-velocity: " + Math.round(player1.v.x * 100) / 100, 10, 30);
+    ctx.fillText("y-velocity: " + Math.round(player1.v.y * 100) / 100, 10, 60);
     
 }//draw
 
