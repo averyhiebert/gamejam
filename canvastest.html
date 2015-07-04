@@ -1,28 +1,17 @@
-<!DOCTYPE html
-PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-
+<!DOCTYPE html>
+<html lang="en" lang="en">
 <head>
-    <meta http-equiv="content-type"
-        content="application/xhtml+xml; charset=utf-8" />
-
-    <title>test of game</title>
-    
-    <script type="text/javascript" src="code/misc.js"></script>
-    <script type="text/javascript" src="code/vector.js"></script>
-    <script type="text/javascript" src="code/shaperotate.js"></script>
-    <script type="text/javascript" src="code/entity.js"></script>
-    <script type="text/javascript" src="code/main.js"></script>  
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+    <title>UVic GameJam</title>
+    <script type="text/javascript" src="src/js/misc.js"></script>
+    <script type="text/javascript" src="src/js/vector.js"></script>
+    <script type="text/javascript" src="src/js/shaperotate.js"></script>
+    <script type="text/javascript" src="src/js/entity.js"></script>
+    <script type="text/javascript" src="src/js/main.js"></script>  
 </head>
 <body onkeydown="keys(event)" onload="start()" onkeypress="keypress(event)" onkeyup="keyup(event)">
-
-
-<canvas id="Canvas" width="100%" height="100%">no canvas</canvas><br />
-
-<img src="images/machine.png" id="machine" height="0" width="0"/>
-
+	<canvas id="Canvas" width="100%" height="100%">no canvas</canvas>
+	<br />
+	<img src="images/machine.png" id="machine" height="0" width="0"/>
 </body>
-
 </html>
