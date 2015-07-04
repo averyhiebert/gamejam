@@ -1,6 +1,5 @@
 function entity(n,x,y,shape,type){
     this.name = n;
-    
     this.p = new Vector(x,y);//position
     this.v = new Vector(0,0);//velocity (should be used to find direction)
     this.a = new Vector(0,0);//acceleration
