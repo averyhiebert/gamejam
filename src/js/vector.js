@@ -18,6 +18,7 @@ function Vector(x,y){
         return new Vector(n*this.x,n*this.y);
     }
 
+    this.subtract = subtract;
     function subtract(vector) {
         return new Vector(this.x - vector.x, this.y - vector.y);
     }
