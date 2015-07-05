@@ -77,7 +77,7 @@ function mouseWasClicked(evt){
     
     x -= rect.left;
     y -= rect.top;
-    if(x>0 && y>0){
+    if (x > 0 && y > 0) {
         t.p.x = x;
         t.p.y = y;
     }
@@ -88,10 +88,10 @@ function draw(){
     var ctx = c.getContext("2d");
     ctx.font = "16px Arial";
     ctx.fillStyle = "#34495e";
-    ctx.fillRect(0,0,960,540);
+    ctx.fillRect(0, 0, 960, 540);
 
     //draw entities
-    for (i=0;i<entityList.length;i++){
+    for (i = 0; i < entityList.length; i++){
         entityList[i].display(ctx);
     }
 
@@ -102,12 +102,12 @@ function draw(){
 
 function gameloop(){
     if(!paused){
-        for (i=0;i<entityList.length;i++){
+        for (i=0; i < entityList.length; i++){
             entityList[i].update();
         }
         draw();
     }
-    throwaway = setTimeout("gameloop()",10);
+    throwaway = setTimeout("gameloop()", 10);
 }
 
 function start(){
