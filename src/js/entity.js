@@ -27,6 +27,11 @@ function entity(n,x,y,shape,type){
         }
     }
     
+    this.testName = testName;
+    function testName(){
+        return "Name: " + this.name;
+    }
+    
     this.teststeer = teststeer;
     function teststeer(){
         this.a.x = 0;
@@ -80,6 +85,11 @@ function entity(n,x,y,shape,type){
         this.p.x += this.v.x;
         this.p.y += this.v.y;
         
+    }
+    
+    this.toString = toString;
+    function toString(){
+        return this.name;
     }
     
     this.setImage = setImage;
