@@ -95,11 +95,6 @@ function draw(){
     //display player variables
     ctx.fillText("x-velocity: " + Math.round(player1.v.x * 100) / 100, 20, 30);
     ctx.fillText("y-velocity: " + Math.round(player1.v.y * 100) / 100, 20, 60);
-    
-    if (paused) {
-        alert("paused");
-        ctx.fillText("PAUSED", 10, 30);
-    }
 }//draw
 
 function gameloop(){
@@ -108,6 +103,12 @@ function gameloop(){
             entityList[i].update();
         }
         draw();
+    } else {
+        var c = document.getElementById("Canvas");
+        var ctx = c.getContext("2d");
+        ctx.font = "32px Arial";
+        ctx.fillStyle = "#ffffff";
+        ctx.fillText("PAUSED", c.width/2-64, c.height/2+10);
     }
     throwaway = setTimeout("gameloop()",10);
 }
