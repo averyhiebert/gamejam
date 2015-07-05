@@ -1,11 +1,11 @@
-var testPoint1 = new Vector(0,0);
-var testPoint2 = new Vector(0,50);
-var testPoint3 = new Vector(50,50);
-var testPoint4 = new Vector(50,0);
+var testPoint1 = new Vector(-25,-25);
+var testPoint2 = new Vector(-25,25);
+var testPoint3 = new Vector(25,25);
+var testPoint4 = new Vector(25,-25);
 var testShapePoints = [testPoint1, testPoint2, testPoint3, testPoint4];
 var testShape = new RotatableShape(testShapePoints);
 var t = new entity("test",120,120,testShape,"entity");
-var player1 = new entity("name",200,200,testShape,"player");
+var player1 = new entity("name",480,270,testShape,"player");
 var entityList = [];
 entityList.push(player1);
 
@@ -46,16 +46,14 @@ function keys(event){
     }
 }
 
-function keypress(event){
-    key=(event.keyCode);
-    
-    if (key==32){
+function keypress(event) {
+    key = (event.keyCode);
+    if (key == 32) {
         //spacebar
-        if(paused){
-            paused=false;
-            //gameloop();
-        }else{
-            paused=true;
+        if (paused) {
+            paused = false;
+        } else {
+            paused = true;
         }
     }
 }
@@ -84,7 +82,6 @@ function keyup(event){
 }
 
 function mouseWasClicked(evt){
-    
     var x = event.x;
     var y = event.y;
     
@@ -102,33 +99,33 @@ function mouseWasClicked(evt){
         t.p.x = x;
         t.p.y = y;
     }
-    
 }
 
 function draw(){
-    var c=document.getElementById("Canvas");
-    var ctx=c.getContext("2d");
+    var c = document.getElementById("Canvas");
+    var ctx = c.getContext("2d");
     ctx.font = "16px Arial";
-    ctx.fillStyle="#34495e";
+    ctx.fillStyle = "#34495e";
     ctx.fillRect(0,0,960,540);
-    
-    //display player variables
-    
-    
+
+    //draw entities
     for (i=0;i<entityList.length;i++){
         entityList[i].display(ctx);
     }
     bullet.display(ctx);
+
+    //display player variables
+    ctx.fillText("x-velocity: " + Math.round(player1.v.x * 100) / 100, 20, 30);
+    ctx.fillText("y-velocity: " + Math.round(player1.v.y * 100) / 100, 20, 60);
     
-    ctx.fillText("x-velocity: " + Math.round(player1.v.x * 100) / 100, 10, 30);
-    ctx.fillText("y-velocity: " + Math.round(player1.v.y * 100) / 100, 10, 60);
-    
+    if (paused) {
+        alert("paused");
+        ctx.fillText("PAUSED", 10, 30);
+    }
 }//draw
 
 function gameloop(){
     if(!paused){
-        
-        
         for (i=0;i<entityList.length;i++){
             entityList[i].update();
         }
