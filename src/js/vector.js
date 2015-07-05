@@ -10,7 +10,11 @@ function Vector(x,y){
     this.normalize = normalize;
     function normalize(){
         mag = this.magnitude();
-        return new Vector((this.x)/mag,(this.y)/mag);
+        if(mag != 0){
+            return new Vector((this.x)/mag,(this.y)/mag);
+        }else{
+            return new Vector(0,0);
+        }
     }
     
     this.multiply = multiply;

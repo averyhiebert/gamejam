@@ -13,8 +13,11 @@ function entity(n,x,y,shape,type){
     
     switch (this.entityType){
         case "player":
-        case "enemy":
             this.maxSpeed = 5;
+            break;
+        case "enemy":
+            this.maxSpeed = 5.1;
+            this.steeringAccel = 0.1;
             break;
         case "bullet":
             this.maxSpeed = 10;
@@ -83,7 +86,13 @@ function entity(n,x,y,shape,type){
     function chasePlayer(){
         targetDirection = player1.p.subtract(this.p);
         targetUnitVector = targetDirection.normalize();
-        this.a = targetUnitVector.multiply(this.steeringAccel);
+        velocityError = (targetUnitVector).subtract(this.v.normalize());
+        targetAcc = velocityError.normalize();
+        
+        this.a = targetAcc.multiply(this.steeringAccel);
+        this.a.x += targetUnitVector.multiply(0.5).x;
+        this.a.y += targetUnitVector.multiply(0.5).y;
+        this.a = this.a.normalize().multiply(this.steeringAccel);
     }
     
     
