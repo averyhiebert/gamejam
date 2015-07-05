@@ -85,7 +85,7 @@ function entity(n,x,y,shape,type){
         bulletShape.color = "#FFFFFF";
         
         bullet = new entity("bullet",this.p.x,this.p.y,bulletShape,"bullet");
-        //bullet.v = bulletVelocity;
+        bullet.v = bulletVelocity;
         entityList.push(bullet);
     }
     

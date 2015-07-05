@@ -9,6 +9,7 @@ var player1 = new entity("name",480,270,testShape,"player");
 var entityList = [];
 entityList.push(player1);
 
+/*
 var point1 = new Vector(0,5);
 var point2 = new Vector(5,0);
 var point3 = new Vector(0,-5);
@@ -18,8 +19,7 @@ var bulletShape = new RotatableShape(shapePoints);
 bulletShape.color = "#FFFFFF";
 
 bullet = new entity("bullet",300,200,bulletShape,"bullet");
-//bullet.v = bulletVelocity;
-entityList.push(bullet);
+entityList.push(bullet);*/
 
 var upPressed = false;
 var leftPressed = false;
@@ -81,7 +81,7 @@ function keyup(event){
     }
 }
 
-function mouseWasClicked(evt){
+function mouseWasClicked(event){
     var x = event.x;
     var y = event.y;
     
@@ -99,7 +99,7 @@ function mouseWasClicked(evt){
         t.p.x = x;
         t.p.y = y;
     }
-}
+}//mouseWasClicked
 
 function draw(){
     var c = document.getElementById("Canvas");
@@ -112,7 +112,12 @@ function draw(){
     for (i=0;i<entityList.length;i++){
         entityList[i].display(ctx);
     }
-    bullet.display(ctx);
+    
+    if(entityList.length >2){
+        entityList[1].display(ctx);
+        entityList[2].display(ctx);
+    }
+    //bullet.display(ctx);
 
     //display player variables
     ctx.fillText("x-velocity: " + Math.round(player1.v.x * 100) / 100, 20, 30);
