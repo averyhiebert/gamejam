@@ -78,9 +78,11 @@ function keyup(event){
     }else if (key==32){
         //spacebar
     }else if (key==84){
+        /*
         for(i=0;i<entityList.length;i++){
             alert(entityList[i].toString());
-        }
+        }*/
+        alert(entityList.length);
     }
 }
 
@@ -112,15 +114,11 @@ function draw(){
     ctx.fillRect(0,0,960,540);
 
     //draw entities
-    for (i=0;i<entityList.length;i++){
-        entityList[i].display(ctx);
-    }
     
-    if(entityList.length >2){
-        entityList[1].display(ctx);
-        entityList[2].display(ctx);
+    
+    for (var i=0;i<entityList.length;i++){
+         entityList[i].display(ctx);
     }
-    //bullet.display(ctx);
 
     //display player variables
     ctx.fillText("x-velocity: " + Math.round(player1.v.x * 100) / 100, 20, 30);
