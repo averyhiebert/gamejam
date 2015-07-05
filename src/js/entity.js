@@ -6,6 +6,12 @@ function entity(n,x,y,shape,type){
     this.steeringAccel = 0.2;    
     this.shape = shape;
     this.hasImage = false;
+    this.age = 0;
+    
+    this.top=0;
+    this.bottom=0;
+    this.left=0;
+    this.right=0;
 
     
     //"player", "enemy", "bullet"
@@ -94,6 +100,21 @@ function entity(n,x,y,shape,type){
        //this.a.x += targetUnitVector.multiply(0.5).x;
        // this.a.y += targetUnitVector.multiply(0.5).y;
        // this.a = this.a.normalize().multiply(this.steeringAccel);
+    }//chasePlayer
+    
+    this.die = die;
+    function die(){
+        if(this.entityType == "player"){
+            alert("You died");
+        }
+        
+        for(var i=0; i<entityList.length; i++){
+            if(entityList[i] == this){
+                entityList.splice(i,1);
+                break;
+            }
+        }
+        
     }
     
     this.shoot = shoot;
@@ -136,7 +157,48 @@ function entity(n,x,y,shape,type){
         this.p.x += this.v.x;
         this.p.y += this.v.y;
         
+        this.findEdges();
+        
+        if(this.entityType == "bullet"){
+            this.age = this.age + 1;
+            if(this.age > 1000){
+                this.die();
+            }
+        }
+        
+        if(this.entityType == "enemy"){
+            this.checkForDeath();
+        }
     }//update
+    
+    this.findEdges = findEdges;
+    function findEdges(){
+        this.top = this.shape.maxheight + this.p.y;
+        this.bottom = this.shape.minheight + this.p.y;
+        this.left = this.shape.minwidth + this.p.x;
+        this.right = this.shape.maxwidth + this.p.x;
+    }
+    
+    
+    this.collide = collide;
+    function collide(other){
+        collideVertical = (this.top > other.bottom && this.bottom < other.top);
+        collideHorizontal = (this.left < other.right && this.right > other.left);
+        return (collideVertical && collideHorizontal);
+    }
+    
+    this.checkForDeath = checkForDeath
+    function checkForDeath(){
+        for(var i=1; i<entityList.length; i++){
+            
+            if(this.entityType == "enemy"){
+                if(entityList[i].entityType == "bullet" && this.collide(entityList[i])){
+                    this.die();
+                    break;
+                }
+            }
+        }
+    }//checkfordeath();
     
     this.toString = toString;
     function toString(){

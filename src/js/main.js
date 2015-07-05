@@ -115,18 +115,24 @@ function draw(){
     }
 
     //display player variables
-    ctx.fillStyle = "#ffffff";
-   // ctx.fillText("x-velocity: " + Math.round(player1.v.x * 100) / 100, 20, 30);
-    //ctx.fillText("y-velocity: " + Math.round(player1.v.y * 100) / 100, 20, 60);
-   // ctx.fillText("x-velocity: " + Math.round(attacker.v.x * 100) / 100, 20, 90);
-   // ctx.fillText("y-velocity: " + Math.round(attacker.v.y * 100) / 100, 20, 120);
-    ctx.fillText("tick: " + tick, 20, 90);
+    ctx.fillStyle = "#ffffff";/*
+    ctx.fillText("x-velocity: " + Math.round(player1.top * 100) / 100, 20, 30);
+    ctx.fillText("y-velocity: " + Math.round(player1.bottom * 100) / 100, 20, 60);
+    ctx.fillText("x-velocity: " + Math.round(player1.left * 100) / 100, 20, 90);
+    ctx.fillText("y-velocity: " + Math.round(player1.right * 100) / 100, 20, 120);*/
+    //ctx.fillText("tick: " + tick, 20, 90);
 }//draw
 
 function gameloop(){
     if(!paused){
         for (i=0; i < entityList.length; i++){
             entityList[i].update();
+            if(entityList[i].entityType == "enemy"){
+                if(player1.collide(entityList[i])){
+                    player1.die();
+                    paused = true;
+                }
+            }
         }
         tick++;
         if (tick % 300 == 0) {
@@ -136,7 +142,7 @@ function gameloop(){
         draw();
     }
     throwaway = setTimeout("gameloop()", 10);
-}
+}//gameloop
 
 function start(){
     img=document.getElementById("machine");
