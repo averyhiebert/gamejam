@@ -7,6 +7,7 @@ var testShape = new RotatableShape(testShapePoints);
 var t = new entity("test",120,120,testShape,"entity");
 var player1 = new entity("name",480,270,testShape,"player");
 var entityList = [];
+var enemyThreshold = 0.005;
 entityList.push(player1);
 
 var upPressed = false;
@@ -14,6 +15,7 @@ var leftPressed = false;
 var rightPressed = false;
 var downPressed = false;
 var paused = false;
+var score = 0;
 
 var tick = 0;
 
@@ -97,10 +99,21 @@ function mouseWasClicked(event){
 
 function spawnEnemy() {
     var attackerShape = new RotatableShape(testShapePoints);
-    var attacker = new entity("enemy", 0, 0, attackerShape,"enemy");
+    
+    randomNum = Math.random();
+    if(randomNum < 0.005){
+    
+        randomNum = Math.random()*940;
+        num2 = Math.random();
+        if(num2>0.5){
+            attacker = new entity("enemy",randomNum,-50,attackerShape,"enemy");
+        }else{
+            attacker = new entity("enemy",randomNum,590,attackerShape,"enemy");
+        }
     attacker.shape.color = "#e74c3c";
     entityList.push(attacker);
-}
+    }
+}//spawnEnemy
 
 function draw(){
     var c = document.getElementById("Canvas");
@@ -115,13 +128,14 @@ function draw(){
     }
 
     //display player variables
-    ctx.fillStyle = "#ffffff";/*
-    ctx.fillText("x-velocity: " + Math.round(player1.top * 100) / 100, 20, 30);
+    ctx.fillStyle = "#ffffff";
+    ctx.fillText("Score: " + score, 20, 30);/*
     ctx.fillText("y-velocity: " + Math.round(player1.bottom * 100) / 100, 20, 60);
     ctx.fillText("x-velocity: " + Math.round(player1.left * 100) / 100, 20, 90);
     ctx.fillText("y-velocity: " + Math.round(player1.right * 100) / 100, 20, 120);*/
     //ctx.fillText("tick: " + tick, 20, 90);
 }//draw
+
 
 function gameloop(){
     if(!paused){
@@ -135,10 +149,11 @@ function gameloop(){
             }
         }
         tick++;
-        if (tick % 300 == 0) {
-            tick = 0;
+        enemyThreshold += 0.0001
+        //if (tick % 300 == 0) {
+            //tick = 0;
             spawnEnemy();
-        }
+       // }
         draw();
     }
     throwaway = setTimeout("gameloop()", 10);

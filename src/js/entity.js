@@ -106,6 +106,8 @@ function entity(n,x,y,shape,type){
     function die(){
         if(this.entityType == "player"){
             alert("You died");
+        }else if(this.entityType == "enemy"){
+            score += 10;
         }
         
         for(var i=0; i<entityList.length; i++){
