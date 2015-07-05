@@ -15,6 +15,8 @@ var rightPressed = false;
 var downPressed = false;
 var paused = false;
 
+var tick = 0;
+
 function keys(event){
     key=(event.keyCode);
     if (key==38){
@@ -101,7 +103,6 @@ function draw(){
     ctx.fillRect(0, 0, 960, 540);
 
     //draw entities
-
     for (var i = 0; i < entityList.length; i++){
         entityList[i].display(ctx);
     }
@@ -110,12 +111,19 @@ function draw(){
     ctx.fillStyle = "#ffffff";
     ctx.fillText("x-velocity: " + Math.round(player1.v.x * 100) / 100, 20, 30);
     ctx.fillText("y-velocity: " + Math.round(player1.v.y * 100) / 100, 20, 60);
+    ctx.fillText("tick: " + tick, 20, 90);
 }//draw
 
 function gameloop(){
     if(!paused){
         for (i=0; i < entityList.length; i++){
             entityList[i].update();
+        }
+        tick++;
+        if (tick % 300 == 0) {
+            tick = 0;
+            player1.spawnEnemy();
+            //alert("tick");
         }
         draw();
     }

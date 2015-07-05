@@ -118,6 +118,6 @@ function entity(n,x,y,shape,type){
     function setImage(newImage){
         this.hasImage = true;
         this.img = newImage;
-    }
+    }   
 }
 
