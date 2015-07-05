@@ -29,8 +29,6 @@ function keys(event){
     }else if (key==40){
         downPressed = true;
         //down();
-    }else if (key==32){
-        //spacebar
     }
 }
 
@@ -43,6 +41,11 @@ function keypress(event) {
         } else {
             paused = true;
         }
+        var c = document.getElementById("Canvas");
+        var ctx = c.getContext("2d");
+        ctx.font = "32px Arial";
+        ctx.fillStyle = "#ffffff";
+        ctx.fillText("PAUSED", c.width/2-64, c.height/2+10);
     }
 }
 
@@ -103,12 +106,6 @@ function gameloop(){
             entityList[i].update();
         }
         draw();
-    } else {
-        var c = document.getElementById("Canvas");
-        var ctx = c.getContext("2d");
-        ctx.font = "32px Arial";
-        ctx.fillStyle = "#ffffff";
-        ctx.fillText("PAUSED", c.width/2-64, c.height/2+10);
     }
     throwaway = setTimeout("gameloop()",10);
 }
