@@ -17,7 +17,7 @@ function entity(n,x,y,shape,type){
             break;
         case "enemy":
             this.maxSpeed = 5.1;
-            this.steeringAccel = 0.1;
+            this.steeringAccel = 0.25;
             break;
         case "bullet":
             this.maxSpeed = 10;
@@ -86,13 +86,14 @@ function entity(n,x,y,shape,type){
     function chasePlayer(){
         targetDirection = player1.p.subtract(this.p);
         targetUnitVector = targetDirection.normalize();
-        velocityError = (targetUnitVector).subtract(this.v.normalize());
+        desiredVelocity = targetUnitVector.multiply(this.maxSpeed);
+        velocityError = (desiredVelocity).subtract(this.v.normalize());
         targetAcc = velocityError.normalize();
         
         this.a = targetAcc.multiply(this.steeringAccel);
-        this.a.x += targetUnitVector.multiply(0.5).x;
-        this.a.y += targetUnitVector.multiply(0.5).y;
-        this.a = this.a.normalize().multiply(this.steeringAccel);
+       //this.a.x += targetUnitVector.multiply(0.5).x;
+       // this.a.y += targetUnitVector.multiply(0.5).y;
+       // this.a = this.a.normalize().multiply(this.steeringAccel);
     }
     
     this.shoot = shoot;
