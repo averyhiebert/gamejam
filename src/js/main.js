@@ -4,21 +4,18 @@ var testPoint3 = new Vector(25,25);
 var testPoint4 = new Vector(25,-25);
 var testShapePoints = [testPoint1, testPoint2, testPoint3, testPoint4];
 var testShape = new RotatableShape(testShapePoints);
-var attackerShape = new RotatableShape(testShapePoints);
 var t = new entity("test",120,120,testShape,"entity");
 var player1 = new entity("name",480,270,testShape,"player");
 var entityList = [];
 entityList.push(player1);
-
-var attacker = new entity("enemy",0,0,attackerShape,"enemy");
-attacker.shape.color = "#FF0000";
-entityList.push(attacker);
 
 var upPressed = false;
 var leftPressed = false;
 var rightPressed = false;
 var downPressed = false;
 var paused = false;
+
+var tick = 0;
 
 function keys(event){
     key=(event.keyCode);
@@ -98,6 +95,13 @@ function mouseWasClicked(event){
     }
 }//mouseWasClicked
 
+function spawnEnemy() {
+    var attackerShape = new RotatableShape(testShapePoints);
+    var attacker = new entity("enemy", 0, 0, attackerShape,"enemy");
+    attacker.shape.color = "#e74c3c";
+    entityList.push(attacker);
+}
+
 function draw(){
     var c = document.getElementById("Canvas");
     var ctx = c.getContext("2d");
@@ -106,7 +110,6 @@ function draw(){
     ctx.fillRect(0, 0, 960, 540);
 
     //draw entities
-
     for (var i = 0; i < entityList.length; i++){
         entityList[i].display(ctx);
     }
@@ -117,12 +120,18 @@ function draw(){
     //ctx.fillText("y-velocity: " + Math.round(player1.v.y * 100) / 100, 20, 60);
    // ctx.fillText("x-velocity: " + Math.round(attacker.v.x * 100) / 100, 20, 90);
    // ctx.fillText("y-velocity: " + Math.round(attacker.v.y * 100) / 100, 20, 120);
+    ctx.fillText("tick: " + tick, 20, 90);
 }//draw
 
 function gameloop(){
     if(!paused){
         for (i=0; i < entityList.length; i++){
             entityList[i].update();
+        }
+        tick++;
+        if (tick % 300 == 0) {
+            tick = 0;
+            spawnEnemy();
         }
         draw();
     }
