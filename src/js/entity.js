@@ -3,15 +3,27 @@ function entity(n,x,y,shape,type){
     this.p = new Vector(x,y);//position
     this.v = new Vector(0,0);//velocity (should be used to find direction)
     this.a = new Vector(0,0);//acceleration
-    this.steeringAccel = 0.1;
-    this.maxSpeed = 5;
-    
+    this.steeringAccel = 0.1;    
     this.shape = shape;
     this.hasImage = false;
-    this.maxspeed = 1;
+
     
     //"player", "enemy", "bullet"
     this.entityType = type;
+    
+    switch (this.entityType){
+        case "player":
+        case "enemy":
+            this.maxSpeed = 5;
+            break;
+        case "bullet":
+            this.maxSpeed = 10;
+            break;
+        default:
+            this.maxSpeed = 5;
+            break;
+    }
+
     
     this.test = test;
     function test(){
