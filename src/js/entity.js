@@ -10,7 +10,7 @@ function entity(n,x,y,shape,type){
     this.hasImage = false;
     this.maxspeed = 1;
     
-    //"player", "enemy", etc.
+    //"player", "enemy", "bullet"
     this.entityType = type;
     
     this.test = test;
@@ -67,6 +67,28 @@ function entity(n,x,y,shape,type){
         }
     }
     
+    this.shoot = shoot;
+    function shoot(target){
+        
+        direction = target.subtract(this.p);
+        
+        normalizedDirection = direction.normalize();
+        bulletVelocity = normalizedDirection.multiply(10);
+        
+        
+        var point1 = new Vector(0,5);
+        var point2 = new Vector(5,0);
+        var point3 = new Vector(0,-5);
+        var point4 = new Vector(-5,0);
+        var shapePoints = [point1, point2, point3, point4];
+        var bulletShape = new RotatableShape(shapePoints);
+        bulletShape.color = "#FFFFFF";
+        
+        bullet = new entity("bullet",this.p.x,this.p.y,bulletShape,"bullet");
+        //bullet.v = bulletVelocity;
+        entityList.push(bullet);
+    }
+    
     this.update = update;
     function update(){
         if(this.entityType == "player"){
@@ -89,7 +111,9 @@ function entity(n,x,y,shape,type){
     
     this.toString = toString;
     function toString(){
-        return this.name;
+        s = "" + name + "\n";
+        s += "x: " + this.p.x + "  y: " + this.p.y + " \n";
+        return s;
     }
     
     this.setImage = setImage;

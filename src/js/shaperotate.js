@@ -5,9 +5,11 @@ function RotatableShape(p){
         this.points[i]=new Vector(p[i].x,p[i].y);
     }
     
+    this.color = "#1abc9c";
+    
     this.display = display;
     function display(origin,ctx){
-        ctx.fillStyle="#1abc9c";
+        ctx.fillStyle=this.color;
         
         ctx.beginPath();
         ctx.moveTo(origin.x + this.points[0].x,origin.y + this.points[0].y);
