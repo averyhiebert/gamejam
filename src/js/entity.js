@@ -3,7 +3,7 @@ function entity(n,x,y,shape,type){
     this.p = new Vector(x,y);//position
     this.v = new Vector(0,0);//velocity (should be used to find direction)
     this.a = new Vector(0,0);//acceleration
-    this.steeringAccel = 0.1;    
+    this.steeringAccel = 0.2;    
     this.shape = shape;
     this.hasImage = false;
 
@@ -85,8 +85,6 @@ function entity(n,x,y,shape,type){
         targetUnitVector = targetDirection.normalize();
         this.a = targetUnitVector.multiply(this.steeringAccel);
     }
-    
-    
     
     this.shoot = shoot;
     function shoot(target){

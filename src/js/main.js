@@ -4,15 +4,10 @@ var testPoint3 = new Vector(25,25);
 var testPoint4 = new Vector(25,-25);
 var testShapePoints = [testPoint1, testPoint2, testPoint3, testPoint4];
 var testShape = new RotatableShape(testShapePoints);
-var attackerShape = new RotatableShape(testShapePoints);
 var t = new entity("test",120,120,testShape,"entity");
 var player1 = new entity("name",480,270,testShape,"player");
 var entityList = [];
 entityList.push(player1);
-
-var attacker = new entity("enemy",0,0,attackerShape,"enemy");
-attacker.shape.color = "#FF0000";
-entityList.push(attacker);
 
 var upPressed = false;
 var leftPressed = false;
@@ -100,6 +95,13 @@ function mouseWasClicked(event){
     }
 }//mouseWasClicked
 
+function spawnEnemy() {
+    var attackerShape = new RotatableShape(testShapePoints);
+    var attacker = new entity("enemy", 0, 0, attackerShape,"enemy");
+    attacker.shape.color = "#e74c3c";
+    entityList.push(attacker);
+}
+
 function draw(){
     var c = document.getElementById("Canvas");
     var ctx = c.getContext("2d");
@@ -127,8 +129,7 @@ function gameloop(){
         tick++;
         if (tick % 300 == 0) {
             tick = 0;
-            player1.spawnEnemy();
-            //alert("tick");
+            spawnEnemy();
         }
         draw();
     }
