@@ -9,18 +9,6 @@ var player1 = new entity("name",480,270,testShape,"player");
 var entityList = [];
 entityList.push(player1);
 
-/*
-var point1 = new Vector(0,5);
-var point2 = new Vector(5,0);
-var point3 = new Vector(0,-5);
-var point4 = new Vector(-5,0);
-var shapePoints = [point1, point2, point3, point4];
-var bulletShape = new RotatableShape(shapePoints);
-bulletShape.color = "#FFFFFF";
-
-bullet = new entity("bullet",300,200,bulletShape,"bullet");
-entityList.push(bullet);*/
-
 var upPressed = false;
 var leftPressed = false;
 var rightPressed = false;
@@ -99,8 +87,7 @@ function mouseWasClicked(event){
     targetVector = new Vector (x,y);
     player1.shoot(targetVector);
     
-    
-    if(x>0 && y>0 && x < 960 && y < 520){
+    if (x>0 && y>0 && x < 960 && y < 520) {
         t.p.x = x;
         t.p.y = y;
     }
@@ -111,28 +98,28 @@ function draw(){
     var ctx = c.getContext("2d");
     ctx.font = "16px Arial";
     ctx.fillStyle = "#34495e";
-    ctx.fillRect(0,0,960,540);
+    ctx.fillRect(0, 0, 960, 540);
 
     //draw entities
-    
-    
-    for (var i=0;i<entityList.length;i++){
-         entityList[i].display(ctx);
+
+    for (var i = 0; i < entityList.length; i++){
+        entityList[i].display(ctx);
     }
 
     //display player variables
+    ctx.fillStyle = "#ffffff";
     ctx.fillText("x-velocity: " + Math.round(player1.v.x * 100) / 100, 20, 30);
     ctx.fillText("y-velocity: " + Math.round(player1.v.y * 100) / 100, 20, 60);
 }//draw
 
 function gameloop(){
     if(!paused){
-        for (i=0;i<entityList.length;i++){
+        for (i=0; i < entityList.length; i++){
             entityList[i].update();
         }
         draw();
     }
-    throwaway = setTimeout("gameloop()",10);
+    throwaway = setTimeout("gameloop()", 10);
 }
 
 function start(){

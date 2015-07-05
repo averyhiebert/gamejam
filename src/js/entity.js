@@ -71,10 +71,8 @@ function entity(n,x,y,shape,type){
     function shoot(target){
         
         direction = target.subtract(this.p);
-        
         normalizedDirection = direction.normalize();
         bulletVelocity = normalizedDirection.multiply(10);
-        
         
         var point1 = new Vector(0,5);
         var point2 = new Vector(5,0);
